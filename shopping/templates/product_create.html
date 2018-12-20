@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-{{message.tags}} message">
+              <i class="close icon"></i>
+              {{message | safe}}
+          </div>
+      {% endfor %}
+  {% endif %}
+
+
+<form method="POST" enctype="multipart/form-data">
+  {% if pid %}
+  <input type="hidden" value="{{pid}}" name="pid">
+  {% endif %}
+  {% csrf_token %}
+  <table class="table">
+{{form.as_table}}
+<tr>
+  <td></td>
+  {% if pid %}
+  <td><input type="submit" value="Update" class="btn btn-success"></td>
+  {% else %}
+  <td><input type="submit" value="Create" class="btn btn-success"></td>
+  {% endif %}
+</tr>
+</table>
+</form>
+  </div>
+
+
+{%endblock%}
