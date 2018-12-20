@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-sripped">
+    <tr><th>PId</th><th>Category Name</th><th>Price</th><th>Availbale</th><th>ViewCount</th><th>Like Count</th><th>Created At</th><th>Updated At</th><th>Image</th><th> Edit</th><th>Delete</th></tr>
+  {% for p1 in pro %}
+  <tr>
+    <td> {{p1.pid}}</td>    <td> {{p1.catid}}</td>    <td> {{p1.pname}}</td> <td> {{p1.price}}</td>    <td> {{p1.available}}</td>    <td> {{p1.vcnt}}</td>
+    <td> {{p1.lcnt}}</td>    <td> {{p1.created_at}}</td> <td> {{p1.updated_at}} </td>
+    <td><img src='{{p1.image.url}}' height='50' width='50'></td>
+    <td> <a href="/shopping/edit_product/?pid={{p1.pid}}"><input class="btn btn-info" type="button" value="Edit"> </a></td>
+    <td> <a href="/shopping/delete_product/?pid={{p1.pid}}"><input class="btn btn-info" type="button" value="Delete"> </a></td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="/shopping/add_product/"><button class="btn btn-primary">Add Product</button></a>
+{%endblock%}

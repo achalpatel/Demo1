@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+  {% block content%}
+    <table>
+      <tr>
+        <th>Category Id</th>
+        <th>Category name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      {% for category in cat %}
+      <tr>
+        <td>{{category.catid}}</td>
+        <td>{{category.cname}}</td>
+        <td><a href="/shopping/edit_category/?catid={{category.catid}}"><input class="btn btn-info" type="button" name="btnedit" value="Edit"></a></td>
+        <td><a href="/shopping/delete_category/?catid={{category.catid}}"><input class="btn btn-info" type="button" name="btndelete" value="Delete"></a></td>
+      </tr>
+      {%endfor%}
+
+    </table>
+    <a href="#"><input type="button" name="btnadd" value="Add Category"></a>
+  {% endblock %}
